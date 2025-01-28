@@ -6,24 +6,36 @@ import {} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailsScreen from './screens/MealDetailsScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+const DrawerNavigator = () => {
+  return <Drawer.Navigator screenOptions={{
+    sceneStyle:{backgroundColor:'#3f2f25'},
+    drawerContentStyle:{backgroundColor:'#3f2f25'},
+  }}>
+    <Drawer.Screen name="MealsCategories" component={CategoriesScreen}/>
+  </Drawer.Navigator>
+}
 export default function App() {
-  const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='MealsCategories' screenOptions={{
+      <Stack.Navigator initialRouteName='DrawerNavigator' screenOptions={{
           headerStyle: {
             backgroundColor: '#592a2a',
           },
           headerTintColor: '#fff',
           contentStyle:{
             backgroundColor: '#24180f'
-          }
+          },
+          
 
       }}>
-        <Stack.Screen name="MealsCategories" component={CategoriesScreen} options={{
-          title: 'Meal Categories',
+        <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} options={{
+          title: 'Drawer Navigator',
           headerTitleAlign: 'center',
+          headerShown:false
         }}/>
         <Stack.Screen name="MealsOverview" component={MealsOverviewScreen}/>
         {/* <Stack.Screen name="MealDetailsScreen" component={MealDetailsScreen} options={{
