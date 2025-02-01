@@ -37,8 +37,8 @@ navigation.navigate('Profile', {userId: 2}); // Stays on the same Profile screen
 
 **Behavior Example**
 1. Start on **Home**
-2. ``navigate('Profile')`` --> Adds a new **Profile**  ``[Home -> Profile]```
-3.``navigate('Profile')`` again --> **Adds another Profile screen on top** ``[Home -> Profile -> Profile]```
+2. ``navigate('Profile')`` --> Adds a new **Profile**  ```[Home -> Profile]```
+3.``navigate('Profile')`` again --> **Adds another Profile screen on top** ```[Home -> Profile -> Profile]```
 4. Press back --> Removes the last Profile screen and goes to the previous Profile instance
 ```
 navigation.push('Profile', { userId: 1 }); // Opens Profile (userId: 1)
