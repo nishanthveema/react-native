@@ -14,6 +14,17 @@ const DetailsScreen ({navigation}) => {
     navigation.navigate('Home')
 }
 ```
+### Navigate from the component inside the Screen
+```
+const DetailsScreenComponent () => {
+    const navigation = useNavigation()
+
+    cosnt onMoveHomePageHandler = () => {
+        navigation.navigate('Home')
+    }
+}
+```
+
 ## ```navigate()``` vs ```push()```
 Think of your app as a stack of pages(like a deck cards). Each timr you move to a new screen, it's either **replacing** the top card(`navigate()`) or **adding a new one** on top(`push()`)
 
@@ -65,16 +76,6 @@ navigation.push('Profile', { userId: 2 }); // Opens a NEW Profile (userId: 2)
 - The `navigation` object is available to all the screen components with the `useNavigation` hook
 - You can go back to an existing screen in the stack with ``navigation.popTo('RouteName')``, and you can go back to the first screen in the stack with ``navigation.popToTop()``
 
-# Navigate from the component inside the Screen
-```
-const DetailsScreenComponent () => {
-    const navigation = useNavigation()
-
-    cosnt onMoveHomePageHandler = () => {
-        navigation.navigate('Home')
-    }
-}
-```
 
 ## Pass Data between Screens
 
