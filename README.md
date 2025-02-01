@@ -24,7 +24,7 @@ Think of your app as a stack of pages(like a deck cards). Each timr you move to 
 **Behavior Example**
 1. Start on **Home**
 2. ``navigate('Profile')`` --> Moves to **Profile** ```[Home -> Profile]```
-3.``navigate('Profile')`` again --> **Stays on the same Profile screen(No duplicate)**  ```[Home -> Profile]```
+3. ``navigate('Profile')`` again --> **Stays on the same Profile screen(No duplicate)**  ```[Home -> Profile]```
 
 **Code Example**
 ```
