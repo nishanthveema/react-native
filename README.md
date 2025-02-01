@@ -143,7 +143,7 @@ If you have nested navigators, you need to pass params a bit differently.
 1. **Pass parameters to the Nested Navigator's Initial Screen**
 When navigating to a nested navigator(``Details`` in this case), you can include the parameters in the ``navigate()`` function. These parameters will be passed to the **initial screen** of the nesred navigator.
 ```
-navigation.navigate('Details',{userId: 123, userName: 'John'})
+navigation.navigate('Details',{ initial: false, params: { userId: 123, name: 'John Doe' }})
 ```
 
 2. **Access Parameters in the Nested Navigator**
