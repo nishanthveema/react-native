@@ -15,6 +15,23 @@ const component = (props) => {
 ```
 
 ### use case
+```
+//component.js
+import {useWindowDimensions} from 'react-native'
+const ComponentScreen = () => {
+    const {width, height} = useWindowDimensions()
+
+    const styles = componentScreenStyes(width, height);
+}
+
+//componentScreenStyle.js
+export const componentScreenStyles = (width, height) => {
+    return StyleSheet.create({
+
+    })
+}
+
+```
 
 
 
