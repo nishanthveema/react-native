@@ -192,7 +192,7 @@ In above case, you're navigating to the ``Media`` screen, which is in a navigato
 ```
 To go to the ProfileScreen(initialRouteName) in Dashboard
 ```
-navigation.navigate('Dashboard', { initial: false, params: { userId: 123, name: 'John Doe' } });
+navigation.navigate('Dashboard', { initial: false }); //we cant pass the params
 or
 navigation.navigate('Dashboard', { screen: "Profile", params: { userId: 123, name: 'John Doe' } });
 ```
