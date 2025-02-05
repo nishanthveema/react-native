@@ -3,7 +3,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native"
 const  BottomOneScreen = ({navigation, route}) => {
     const userId = route.params?.userId ?? 2;
     return <View style={Styles.container}>
-        <Pressable onPress={() => navigation.navigate('BottomTwo')}>
+        <Pressable onPress={() => navigation.setOptions({title: 'Bottom One'})}>
             <Text>Go to Bottom Two {userId}</Text>
         </Pressable>
     </View>
