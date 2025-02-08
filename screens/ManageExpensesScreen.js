@@ -1,6 +1,7 @@
-import { View, Text } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import { manageExpensesScreenStyles } from "../styles/ManageExpensesScreenStyles";
 import { useLayoutEffect } from "react";
+import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 
 const ManageExpensesScreen = ({ route,navigation }) => {
   const styles = manageExpensesScreenStyles();
@@ -11,8 +12,8 @@ const ManageExpensesScreen = ({ route,navigation }) => {
     })
   },[expenseId, navigation]);
   return (
-    <View>
-      <Text>All expense {expenseId}</Text>
+    <View style={styles.container}>
+      <ExpenseForm />
     </View>
   );
 };
