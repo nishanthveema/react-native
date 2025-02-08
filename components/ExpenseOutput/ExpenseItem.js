@@ -8,7 +8,8 @@ const ExpenseItem = ({ item }) => {
   const navigation = useNavigation();
   const expensePressedHandler = () => {
     navigation.navigate("ManageExpenses",{
-      expenseId:item.id
+      expenseId:item.id,
+      action:"edit"
     });
   }
   return (

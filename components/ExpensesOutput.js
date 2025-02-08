@@ -36,9 +36,10 @@ const DUMMY_EXPENSES = [
 ]
 const ExpensesOutput = ({expenses, expensePeriod}) => {
     const styles = expenseOutputStyles();
+    console.log(expenses);
     return <View style={styles.container}>
         <Summary periodName={expensePeriod} expenses={DUMMY_EXPENSES} />
-        <ExpenseList expenses={DUMMY_EXPENSES}/>
+        <ExpenseList expenses={expenses}/>
     </View>
 }
 export default ExpensesOutput;

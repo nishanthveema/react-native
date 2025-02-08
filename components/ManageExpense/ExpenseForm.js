@@ -1,20 +1,41 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import Input from "./Input";
 import { useState } from "react";
+import { postRequest } from "../../constants/axios";
 
-const ExpenseForm = () => {
-    const [amount, setAmount] = useState("");
-    const [date, setDate] = useState("");
-    const [description, setDescription] = useState("");
+const ExpenseForm = ({action, id}) => {
+    console.log(action, id);
+    const [formData, setFormData] = useState({
+        amount: "",
+        date: "",
+        description: "",
+    });
 
-    const confirmHandler = () => {
-        console.log(amount, date, description);
+    const onChangeFormHandler = (type, text) => {
+        setFormData((prevState) => {
+            return {
+                ...prevState,
+                [type]: text,
+            };
+        });
     }
-    const onSubmitHandler = () => {
-        const amountIsValid = !isNaN(amount) && +amount > 0;
-        const dateIsValid = date.trim().length > 0 && date.trim().length <= 10;
-        const descriptionIsValid = description.trim().length > 0;
-        console.log(amount, date, description);
+    
+    const confirmHandler = () => {
+        console.log(formData);
+    }
+    const onSubmitHandler = async () => {
+        const amountIsValid = !isNaN(formData.amount) && +formData.amount > 0;
+        const dateIsValid = formData.date.trim().length > 0 && formData.date.trim().length <= 10;
+        const descriptionIsValid = formData.description.trim().length > 0;
+        try{
+            const store = await postRequest( formData);
+            console.log(store);
+
+        }catch(err){
+            console.log(err);
+        }finally{
+
+        }
     }
   return (
     <View style={styles.form}> 
@@ -24,10 +45,8 @@ const ExpenseForm = () => {
                 label={"Amount"}
                 textInputConfig={{
                 keyboardType: "decimal-pad",
-                onChangeText: (text) => {
-                    setAmount(text);
-                },
-                value: amount,
+                onChangeText: onChangeFormHandler.bind(this, "amount"),
+                value: formData.amount,
                 }}
                 style={{flex:1}}
             />
@@ -36,11 +55,9 @@ const ExpenseForm = () => {
                 textInputConfig={{
                 keyboardType: "default",
                 placeholder: "MM/DD/YYYY",
-                onChangeText: (text) => {
-                    setDate(text);
-                },
+                onChangeText: onChangeFormHandler.bind(this, "date"),
                 maxLength: 10,
-                value: date,
+                value: formData.date,
                 }}
                 style={{flex:1}}
             />
@@ -50,10 +67,8 @@ const ExpenseForm = () => {
         label={"Description"}
         textInputConfig={{
           keyboardType: "default",
-          onChangeText: (text) => {
-            setDescription(text);
-          },
-          value: description,
+          onChangeText: onChangeFormHandler.bind(this, "description"),
+          value: formData.description,
           multiline: true,
           autoCorrect: false,
         }}
